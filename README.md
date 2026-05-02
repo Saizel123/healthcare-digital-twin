@@ -180,7 +180,24 @@ This step improved the reliability of the dataset before model training.
 
 ---
 ## Dashboard Screenshots
-![Dashboard Screenshot](assets/dashboard_screenshot.png)
+
+### Main Dashboard and Risk Prediction
+![Main Dashboard](assets/dashboard_main.png)
+
+### Patient-Specific Risk Explanation
+![Patient Explanation](assets/Patient_Specific_Risk_Explanation.png)
+
+### What-if Simulation
+![What-if Simulation](assets/whatif_Simulation.png)
+
+### Patient Risk Trajectory
+![Risk Trajectory](assets/Risk_trajectory.png)
+
+### Model Evaluation and Interpretation Summary
+![Model Comparison](assets/Interpretation.png)
+
+
+
 ---
 ## How to Run the Project Locally
 1. Clone the repository
