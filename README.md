@@ -55,21 +55,40 @@ The output is shown as:
 
 ### 2. What-if Simulation
 
-The dashboard allows users to simulate health improvements by adjusting glucose, BMI, and blood pressure.
+The dashboard allows users to simulate health improvements by adjusting glucose, BMI, and blood pressure. The system then recalculates the predicted diabetes risk and compares:
+- Before and After Simulation risk
+- Risk reduction in percentage points
+- Before and After risk category
 
 ### 3. Patient Risk Trajectory
 
-The project shows how the predicted risk may change over six months under a selected improvement scenario.
+The project shows how the predicted risk may change over six months under a selected improvement scenario. It assumes a gradual linear improvement over six months. This allows the dashboard to show how the model-predicted risk may evolve over time under a selected what-if scenario.
+
+Because the final model is tree-based, the risk trajectory may not always decrease perfectly smoothly. Small increases or flat segments can occur when simulated values cross model decision thresholds.
 
 ### 4. Model Explainability
 
-The project includes feature importance, SHAP analysis in the notebook, and patient-level risk contribution explanations.
+The project includes feature importance, SHAP analysis in the notebook, and patient-level risk contribution explanations. 
+This helps answer why did the model predict this risk level?
 
 ### 5. Model Evaluation and Threshold Tuning
 
-Several models were compared, and the final model was selected based on recall and F1-score for diabetes-risk detection.
+Several models were trained and compared:
+- Logistic Regression
+- Decision Tree
+- Random Forest
+- XGBoost
+- Balanced XGBoost
+- LightGBM
+- Balanced LightGBM
 
+and the final model was selected based on recall and F1-score for diabetes-risk detection rather than accuracy alone.
 
+The final selected model was:
+
+> Balanced XGBoost with custom decision threshold = 0.25
+
+This threshold was chosen because it improved the model’s ability to detect diabetes-risk cases.
 
 ---
 ## Digital Twin Concept
@@ -103,42 +122,138 @@ Reduce blood pressure by 5%
 
 Updated predicted diabetes risk = Low / Medium / High depending on the model output.
 ```
----
-## Model Performance Summary
 
 ---
 
 ## Dataset
+This project uses the Pima Indians Diabetes dataset.
+
+The dataset contains indicators such as:
+
+- Pregnancies
+- Glucose
+- Blood pressure
+- Skin thickness
+- Insulin
+- BMI
+- Diabetes pedigree function
+- Age
+- Diabetes outcome
+
+Target variable included:
+| Value | Meaning     |
+| ----- | ----------- |
+| 0     | No diabetes |
+| 1     | Diabetes    |
 
 ---
 
 ## Data Cleaning
+Some columns contained medically unrealistic zero values. For example, glucose, blood pressure, insulin, and BMI should not realistically be zero.
+
+The following columns were cleaned:
+
+- Glucose
+- BloodPressure
+- SkinThickness
+- Insulin
+- BMI
+
+Zero values were replaced with missing values and then filled by using the median value of each column.
+
+This step improved the reliability of the dataset before model training.
+
 
 ---
 ## Tech Stack
+- Python
+- Pandas
+- Numpy
+- Scikit-learn
+- XGBoost
+- LightGBM
+- SHAP
+- Matplotlib
+- Streamlit
+- Joblib
 
 ---
 ## Project Structure
 
+healthcare-digital-twin/
+│
+├── app/
+│   └── streamlit_app.py
+│
+├── data/
+│   ├── diabetes.csv
+│   └── diabetes_cleaned.csv
+│
+├── models/
+│   ├── diabetes_xgb_digital_twin_model.pkl
+│   └── diabetes_risk_threshold.pkl
+│
+├── notebooks/
+│   └── 01_model_training_and_explainability.ipynb
+│
+├── assets/
+│   └── dashboard_screenshots.png
+│
+├── README.md
+└── requirements.txt
+
 ---
 ## Dashboard Screenshots
-
+![Dashboard Screenshot](assets/dashboard_screenshot.png)
 ---
 ## How to Run the Project Locally
-
+1. Clone the repository
+2. Create and activate environment
+3. Install dependencies
+4. Run the Streamlit app
 ---
 ## Live Demo
-
+YOUR_STREAMLIT_LINK
 
 ---
 ## Limitations
+This project is a student portfolio prototype and should not be used for clinical diagnosis.
 
+Important limitations:
+
+- The dataset is small and may not represent diverse populations.
+- The model is trained on historical tabular data, not real-time patient monitoring data.
+- The what-if simulation is based on model-estimated risk, not medical causality.
+- The risk trajectory assumes gradual linear improvement, which may not reflect real patient behavior.
+- Predictions should support analysis, it should not replace medical professionals.
+  
 ---
 
 ## Future Improvements
+Possible future extensions include:
 
+- Use larger and more diverse healthcare datasets
+- Add real patient time-series monitoring data
+- Include additional clinical indicators
+- Add SHAP plots directly inside the dashboard
+- Deploy the app on Streamlit Community Cloud
+- Add user authentication for personalized patient profiles
+- Generate downloadable PDF reports
+- Add Docker support
+- Integrate anomaly detection for real-time monitoring
+- Extend the digital twin concept to cardiovascular or multi-disease risk monitoring
+  
 ---
 ## Disclaimer
+This project is for educational learning and portfolio purposes only.
+
+It is not a medical device, diagnostic system, or clinical decision-making tool. Any healthcare-related predictions should be validated by qualified medical professionals and tested on clinically appropriate datasets before real-world use.
 
 ---
 ## Author
+Saizel Pathania
+Master’s Student in Data Science
+TU Dortmund University
+
+LinkedIn: linkedin.com/in/saizel-pathania
+ORCID: 0009-0004-8742-3846
