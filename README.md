@@ -206,6 +206,8 @@ This step improved the reliability of the dataset before model training.
 4. Run the Streamlit app
 ---
 ## Live Demo
+Try the deployed Streamlit app here:
+
 [LIVE_DEMO_LINK](https://healthcare-digital-twin-peggpz822n6qnoievcfdyb.streamlit.app/)
 
 ---
