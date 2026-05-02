@@ -177,30 +177,6 @@ This step improved the reliability of the dataset before model training.
 - Streamlit
 - Joblib
 
----
-## Project Structure
-
-healthcare-digital-twin/
-│
-├── app/
-│   └── streamlit_app.py
-│
-├── data/
-│   ├── diabetes.csv
-│   └── diabetes_cleaned.csv
-│
-├── models/
-│   ├── diabetes_xgb_digital_twin_model.pkl
-│   └── diabetes_risk_threshold.pkl
-│
-├── notebooks/
-│   └── 01_model_training_and_explainability.ipynb
-│
-├── assets/
-│   └── dashboard_screenshots.png
-│
-├── README.md
-└── requirements.txt
 
 ---
 ## Dashboard Screenshots
