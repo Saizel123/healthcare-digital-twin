@@ -35,7 +35,43 @@ The dashboard allows users to answer questions such as:
 - Why did the model classify the patient as low, medium, or high risk?
 
 ---
+## Key Features
 
+### 1. Diabetes Risk Prediction
+
+The model predicts the probability that a patient belongs to the diabetes-risk class.
+
+The output is shown as:
+
+- Risk probability
+- Risk category
+- Risk prediction label
+  
+| Probability Range | Risk Category |
+| ----------------- | ------------- |
+| Below 25%         | Low Risk      |
+| 25% to 60%        | Medium Risk   |
+| 60% and above     | High Risk     |
+
+### 2. What-if Simulation
+
+The dashboard allows users to simulate health improvements by adjusting glucose, BMI, and blood pressure.
+
+### 3. Patient Risk Trajectory
+
+The project shows how the predicted risk may change over six months under a selected improvement scenario.
+
+### 4. Model Explainability
+
+The project includes feature importance, SHAP analysis in the notebook, and patient-level risk contribution explanations.
+
+### 5. Model Evaluation and Threshold Tuning
+
+Several models were compared, and the final model was selected based on recall and F1-score for diabetes-risk detection.
+
+
+
+---
 ## Digital Twin Concept
 
 In this project, the digital twin is a simplified virtual representation of a patient.
@@ -66,3 +102,43 @@ Reduce BMI by 10%
 Reduce blood pressure by 5%
 
 Updated predicted diabetes risk = Low / Medium / High depending on the model output.
+```
+---
+## Model Performance Summary
+
+---
+
+## Dataset
+
+---
+
+## Data Cleaning
+
+---
+## Tech Stack
+
+---
+## Project Structure
+
+---
+## Dashboard Screenshots
+
+---
+## How to Run the Project Locally
+
+---
+## Live Demo
+
+
+---
+## Limitations
+
+---
+
+## Future Improvements
+
+---
+## Disclaimer
+
+---
+## Author
